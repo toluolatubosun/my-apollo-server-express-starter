@@ -9,7 +9,7 @@ export default async (authorization: string | undefined) => {
     const authToken = authorization.split(" ")[1];
     const decoded = JWT.verify(authToken, JWT_SECRET) as any;
 
-    const user = await User.findOne({ id: decoded.id });
+    const user = await User.findOne({ _id: decoded.id });
 
     return user;
 };

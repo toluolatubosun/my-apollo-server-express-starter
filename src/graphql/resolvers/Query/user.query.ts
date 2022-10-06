@@ -8,7 +8,7 @@ import type { IUser } from "../../../models/user.model";
 export default {
     me: async (_: any, __: any, context: Context): Promise<IUser> => {
         const user = guard(context.user, ROLE.USER);
-        return await UserService.getOne(user._id);
+        return await UserService.getOne(user.id);
     },
     user: async (_: any, { userId }: UserArgs, context: Context): Promise<IUser> => {
         guard(context.user, ROLE.ADMIN);
